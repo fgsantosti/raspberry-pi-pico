@@ -15,7 +15,7 @@ ________________________________________________________________________________
 ## 1. Exemplo debugando código no Visual Studio Code
 
 ## 2. Exemplos C Bootsel
-    ### 2.1. Botao com condicional (pressionando)
+### 2.1 Botao com condicional (pressionando)
 ```c
 /**
  * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
@@ -79,7 +79,7 @@ bool __no_inline_not_in_flash_func(get_bootsel_button)() {
 }
 ```
 
-    ### 2.2. Um contador usando o botão
+### 2.2 Um contador usando o botão
 
 ```c
 #include <stdio.h>
@@ -97,7 +97,7 @@ int main() {
 }
 
 ```
-    ### 2.3. ntrada de dados a placa Raspberry Pi Pico
+### 2.3 ntrada de dados a placa Raspberry Pi Pico
 
 ```c
 #include <stdio.h>
@@ -124,8 +124,8 @@ int main() {
 }
 
 ```
-    ### 2.4. laço de repeticao
-    ### 2.5. funcao
+### 2.4 laço de repeticao
+### 2.5 funcao
 
 
 ## 3. Placa bitdoglab botao e led RGB
