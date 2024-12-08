@@ -1,23 +1,21 @@
 
 ## Conteúdo Aula EmbarcaTech sobre a Configuração Visual Code e a placa Raspberry Pi Pico W
 
-## 1. Apresentacao marcelino
-## 2. Apresentacao jivago e felipe
-## 3. Jivago exemplo debug
-## 4. Felipe exemplos C bootsel
-    ### botao com condicional (pressionando
+## 1. Exemplo debug
+## 2. Exemplos C Bootsel
+    ### botao com condicional (pressionando)
     ### segundo com um contador
     ### terceiro entrada de dados
     ### laço de repeticao
     ### funcao
-## 5. Placa bitdoglab botao e led RGB
-## 6. Placa bitdoglab botao e buzzer
-## 7. Despedida
+## 5. Placa Bitdoglab botao e led RGB
+## 6. Placa Bitdoglab botao e buzzer
 
+____________________________________________________________________________________________________________________________________________________________________
+## 1. Exemplo debugando código no Visual Studio Code
 
-## 1. Jivago exemplo debug
-## 2. Felipe exemplos C bootsel
-    ### botao com condicional (pressionando
+## 2. Exemplos C Bootsel
+    ### Botao com condicional (pressionando)
 ```c
 /**
  * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
@@ -81,7 +79,7 @@ bool __no_inline_not_in_flash_func(get_bootsel_button)() {
 }
 ```
 
-    _ segundo com um contador
+    ### Um contador usando o botão
 
 ```c
 #include <stdio.h>
@@ -99,7 +97,7 @@ int main() {
 }
 
 ```
-    _ terceiro entrada de dados
+    ### Entrada de dados a placa Raspberry Pi Pico
 
 ```c
 #include <stdio.h>
@@ -126,8 +124,10 @@ int main() {
 }
 
 ```
-    _ laço de repeticao
-    _ funcao
+    ### laço de repeticao
+    ### funcao
+
+
 ## 3. Placa bitdoglab botao e led RGB
 ## 4. Placa bitdoglab botao e buzzer
 
