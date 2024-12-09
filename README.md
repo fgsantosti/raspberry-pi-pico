@@ -168,7 +168,7 @@ int main() {
 
 #### Simulação em Hardware
 
-Para realizarmos os exemplos com a placa Raspberry Pi Pico W, inicialmente precisaremos criar o exemplo do [blink]((https://github.com/raspberrypi/pico-examples/tree/master/blink)). O professore irá fazer com vocês. 
+Para realizarmos os exemplos com a placa Raspberry Pi Pico W, inicialmente precisaremos criar o exemplo do [blink](https://github.com/raspberrypi/pico-examples/tree/master/blink). O professore irá fazer com vocês. 
 
 
 ```c
@@ -227,7 +227,7 @@ int main() {
 }
 ```
 
-Para melhor compreesão de vocês vamos utilizar o botão da propria placa Raspberry Pi Pico W, ela pode ser acionada com o código que se encontra na documetação do [botao]((https://github.com/raspberrypi/pico-examples/tree/master/picoboard/button)).
+Para melhor compreesão de vocês vamos utilizar o botão da propria placa Raspberry Pi Pico W, ela pode ser acionada com o código que se encontra na documetação do [botao](https://github.com/raspberrypi/pico-examples/tree/master/picoboard/button).
 
 
 Vamos transformar o código do botão em uma `biblioteca`. 
@@ -609,20 +609,36 @@ int main() {
 #### Simulação em Hardware
 Controlar LEDs com base em um vetor:
 ```c
-#include <stdio.h>
+#include "pico/stdlib.h"
+#include "bootsel.h"
 
+//código omitido para LED do Pico piscar
+
+// Função principal do programa
 int main() {
-    int estados[3] = {1, 0, 1};  // 1 = ligado, 0 = desligado
-    
-    for (int i = 0; i < 3; i++) {
-        if (estados[i] == 1) {
-            printf("LED %d ligado!\n", i + 1);
-        } else {
-            printf("LED %d desligado!\n", i + 1);
+    // Loop infinito para piscar o LED
+    while (true) {
+        // Vetor com tempos de piscar o LED
+        int tempos[30] = {
+            50, 1200, 300, 700, 1500, 250, 800, 100, 1800, 500,
+            60, 900, 400, 1300, 900, 2000, 300, 1600, 150, 500,
+            250, 1100, 700, 50, 1900, 600, 1300, 80, 850, 400
+        };
+        
+        // Loop para piscar o LED com base nos tempos do vetor
+        for (int i = 0; i < 30; i++) {
+            // Liga o LED
+            pico_set_led(true);
+            // Aguarda por um tempo definido pelo vetor
+            sleep_ms(tempos[i]);
+            // Desliga o LED
+            pico_set_led(false);
+            // Aguarda por um tempo definido pelo vetor
+            sleep_ms(tempos[i]);
         }
     }
-    return 0;
 }
+
 ```
 
 ---
