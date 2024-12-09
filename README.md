@@ -76,7 +76,8 @@ int main() {
 }
 ```
 
-Para melhor compreesão de vocês vamos utilizar o botão da propria placa Raspberry Pi Pico W, ela pode ser acionada com o código com o código que se encontra na documetação do [botao]((https://github.com/raspberrypi/pico-examples/blob/master/picoboard/button/button.c)).
+Para melhor compreesão de vocês vamos utilizar o botão da propria placa Raspberry Pi Pico W, ela pode ser acionada com o código que se encontra na documetação do [botao]((https://github.com/raspberrypi/pico-examples/tree/master/picoboard/button)).
+
 
 Vamos transformar o código do botão em uma `biblioteca`. 
 
@@ -191,8 +192,34 @@ bool __no_inline_not_in_flash_func(get_bootsel_button)() {
 ```
 
 Agora vamos alterar um pouco a nossa funçao `main`:
+```c
+#include "pico/stdlib.h"
+#include "bootsel.h"
+
+//código omitido para LED do Pico piscar
+
+// Loop infinito para verificar o estado do botão Bootsel
+while (true) {
+    // Verifica se o botão Bootsel está pressionado
+    if (get_bootsel_button()) {
+        // Se o botão estiver pressionado, liga o LED
+        pico_set_led(true);
+    } else {
+        // Se o botão não estiver pressionado, desliga o LED
+        pico_set_led(false);
+    }
+}
+
+```
+
+Vamos fazer mais um exemplo bem legal, vamos alterar um pouco a nossa funçao `main`:
 
 ```c
+#include "pico/stdlib.h"
+#include "bootsel.h"
+
+//código omitido para LED do Pico piscar
+
 int main() {
     // Inicializa o LED
     int rc = pico_led_init();
