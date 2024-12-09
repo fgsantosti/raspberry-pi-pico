@@ -126,7 +126,7 @@ int soma(int a, int b) {
 
 Nesse exemplo, o arquivo meu_programa.c inclui a biblioteca minha_biblioteca.h e usa a função soma da biblioteca. A biblioteca minha_biblioteca.h declara a função soma, que é definida no arquivo minha_biblioteca.c.
 
-Vamos criar o bootsel.h uma biblioteca para utilizarmos o botão da propria placa. 
+Vamos criar o arquivo `bootsel.h` uma biblioteca para utilizarmos o botão da propria placa. 
 
 ```c
 /**
@@ -212,6 +212,29 @@ while (true) {
 
 ```
 
+
+
+```c
+#include "pico/stdlib.h"
+#include "bootsel.h"
+
+//código omitido para LED do Pico piscar
+
+// Loop infinito para verificar o estado do botão Bootsel
+while (true) {
+    // Verifica se o botão Bootsel está pressionado
+    if (get_bootsel_button()) {
+        // Se o botão estiver pressionado, liga o LED
+        pico_set_led(true);
+        // Aguarda por 2 segundos antes de continuar o loop
+        sleep_ms(2000);
+    } else {
+        // Se o botão não estiver pressionado, desliga o LED
+        pico_set_led(false);
+    }
+}
+```
+
 Vamos fazer mais um exemplo bem legal, vamos alterar um pouco a nossa funçao `main`:
 
 ```c
@@ -242,9 +265,6 @@ int main() {
             
             // Aguardamos por um tempo antes de verificar novamente o botão
             sleep_ms(LED_DELAY_MS);
-            
-            // Continuamos o loop
-            continue;
         }
         
         // Se o botão não estiver pressionado, fazemos nada
@@ -440,16 +460,30 @@ int main() {
 ```
 
 #### Simulação em Hardware
-Piscar um LED 5 vezes:
+Piscar um LED 50 vezes:
 ```c
-#include <stdio.h>
 
-int main() {
-    for (int i = 1; i <= 5; i++) {
-        printf("LED ligado!\n");
-        printf("LED desligado!\n");
-    }
-    return 0;
+#include "pico/stdlib.h"
+#include "bootsel.h"
+
+//código omitido para LED do Pico piscar
+
+// Loop infinito para verificar o estado do botão Bootsel
+while (true) {
+    // Verifica se o botão Bootsel está pressionado
+    if (get_bootsel_button()) {
+        // Se o botão estiver pressionado, executa um loop para piscar o LED
+        for (int i = 0; i < 50; i++) {
+            // Liga o LED
+            pico_set_led(true);
+            // Aguarda por 50 milissegundos
+            sleep_ms(50);
+            // Desliga o LED
+            pico_set_led(false);
+            // Aguarda por 60 milissegundos
+            sleep_ms(60);
+        }
+    } 
 }
 ```
 
