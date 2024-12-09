@@ -167,7 +167,6 @@ int main() {
 ```
 
 #### Simulação em Hardware
-Imagine que estamos acendendo um LED para indicar "Hello World":
 
 Para realizarmos os exemplos com a placa Raspberry Pi Pico W, inicialmente precisaremos criar o exemplo do [blink]((https://github.com/raspberrypi/pico-examples/tree/master/blink)). O professore irá fazer com vocês. 
 
@@ -494,20 +493,39 @@ int main() {
 #### Simulação em Hardware
 Função para controlar o LED:
 ```c
-#include <stdio.h>
+#include "pico/stdlib.h"
+#include "bootsel.h"
 
-void ligar_led() {
-    printf("LED ligado!\n");
+//código omitido para LED do Pico piscar
+
+// Função para piscar o LED
+void blink() {
+    // Verifica se o botão de boot está pressionado
+    if (get_bootsel_button()) {
+        // Laço de repetição para piscar o LED 50 vezes
+        for (int i = 0; i < 50; i++) {
+            // Liga o LED
+            pico_set_led(true);
+            // Aguarda por 50 milissegundos
+            sleep_ms(50);
+            // Desliga o LED
+            pico_set_led(false);
+            // Aguarda por 50 milissegundos
+            sleep_ms(50);
+        }
+    }
 }
 
-void desligar_led() {
-    printf("LED desligado!\n");
-}
-
+// Função principal do programa
 int main() {
-    ligar_led();
-    desligar_led();
-    return 0;
+    // Inicializa o LED
+    int rc = pico_led_init();
+    // Verifica se a inicialização foi bem-sucedida
+    hard_assert(rc == PICO_OK);
+    // Loop infinito para chamar a função blink()
+    while (true) {
+        blink();
+    }
 }
 ```
 
