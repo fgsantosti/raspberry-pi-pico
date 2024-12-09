@@ -14,6 +14,158 @@ int main() {
 }
 ```
 
+---
+
+### **2. Operadores Aritméticos**
+#### Explicação
+Os operadores aritméticos em C incluem:
+- `+` (adição), `-` (subtração), `*` (multiplicação), `/` (divisão), `%` (resto da divisão).
+
+#### Exemplo: Cálculo de média
+```c
+#include <stdio.h>
+
+int main() {
+    float nota1 = 8.5, nota2 = 7.0, media;
+    
+    // Calcula a média
+    media = (nota1 + nota2) / 2;
+    
+    printf("A média das notas é: %.2f\n", media);  // Exibe o resultado
+    return 0;
+}
+```
+
+#### Simulação em Hardware
+Controlando a intensidade de um LED com um valor médio:
+```c
+#include <stdio.h>
+
+int main() {
+    int brilho1 = 50;  // Intensidade do LED 1 (0 a 100)
+    int brilho2 = 80;  // Intensidade do LED 2
+    int brilho_medio;
+    
+    brilho_medio = (brilho1 + brilho2) / 2;  // Calcula o brilho médio
+    printf("Brilho médio do LED: %d\n", brilho_medio);
+    return 0;
+}
+```
+
+---
+
+### **3. Operadores de Comparação**
+#### Explicação
+Comparam valores e retornam `1` (verdadeiro) ou `0` (falso):
+- `==` (igual), `!=` (diferente), `<`, `>`, `<=`, `>=`.
+
+#### Exemplo: Comparação de números
+```c
+#include <stdio.h>
+
+int main() {
+    int a = 5, b = 10;
+    
+    if (a < b) {
+        printf("A é menor que B\n");
+    } else {
+        printf("A não é menor que B\n");
+    }
+    return 0;
+}
+```
+
+#### Simulação em Hardware
+Verificar se um botão foi pressionado:
+```c
+#include <stdio.h>
+
+int main() {
+    int botao_pressionado = 1;  // 1 significa que o botão foi pressionado
+    
+    if (botao_pressionado == 1) {
+        printf("O botão foi pressionado, acendendo o LED!\n");
+    } else {
+        printf("O botão não foi pressionado.\n");
+    }
+    return 0;
+}
+```
+
+---
+
+### **4. Operadores Lógicos**
+#### Explicação
+Combinam expressões:
+- `&&` (e lógico), `||` (ou lógico), `!` (não lógico).
+
+#### Exemplo: Controle de acesso
+```c
+#include <stdio.h>
+
+int main() {
+    int senha_correta = 1234;  // Senha correta
+    int senha_entrada;        // Senha digitada pelo usuário
+    int botao_pressionado;    // Estado do botão: 1 = pressionado, 0 = não pressionado
+
+    // Solicita a senha do usuário
+    printf("Digite a senha: ");
+    scanf("%d", &senha_entrada);
+
+    // Solicita o estado do botão
+    printf("O botão foi pressionado? (1 para Sim, 0 para Não): ");
+    scanf("%d", &botao_pressionado);
+
+    // Verifica as duas condições
+    if (senha_entrada == senha_correta && botao_pressionado == 1) {
+        printf("Acesso permitido! LED aceso.\n");
+    } else {
+        printf("Acesso negado. Verifique a senha ou pressione o botão.\n");
+    }
+
+    return 0;
+}
+```
+
+#### Simulação em Hardware
+Acender o LED apenas se dois botões forem pressionados:
+```c
+#include <stdio.h>
+
+int main() {
+    int botao1 = 1, botao2 = 0;  // 1 = pressionado, 0 = não pressionado
+    
+    if (botao1 == 1 && botao2 == 1) {
+        printf("Ambos os botões foram pressionados. LED aceso!\n");
+    } else {
+        printf("Os dois botões não estão pressionados.\n");
+    }
+    return 0;
+}
+```
+
+---
+
+### **5. Estruturas Condicionais**
+#### Explicação
+Permitem executar partes diferentes do código com base em condições.
+
+#### Exemplo: Verificar temperatura
+```c
+#include <stdio.h>
+
+int main() {
+    int temperatura = 30;
+
+    if (temperatura > 25) {
+        printf("Está quente!\n");
+    } else {
+        printf("Está frio!\n");
+    }
+    return 0;
+}
+```
+
 #### Simulação em Hardware
 Imagine que estamos acendendo um LED para indicar "Hello World":
 
@@ -269,175 +421,6 @@ int main() {
         
         // Se o botão não estiver pressionado, fazemos nada
     }
-}
-```
-
----
-
-### **2. Operadores Aritméticos**
-#### Explicação
-Os operadores aritméticos em C incluem:
-- `+` (adição), `-` (subtração), `*` (multiplicação), `/` (divisão), `%` (resto da divisão).
-
-#### Exemplo: Cálculo de média
-```c
-#include <stdio.h>
-
-int main() {
-    float nota1 = 8.5, nota2 = 7.0, media;
-    
-    // Calcula a média
-    media = (nota1 + nota2) / 2;
-    
-    printf("A média das notas é: %.2f\n", media);  // Exibe o resultado
-    return 0;
-}
-```
-
-#### Simulação em Hardware
-Controlando a intensidade de um LED com um valor médio:
-```c
-#include <stdio.h>
-
-int main() {
-    int brilho1 = 50;  // Intensidade do LED 1 (0 a 100)
-    int brilho2 = 80;  // Intensidade do LED 2
-    int brilho_medio;
-    
-    brilho_medio = (brilho1 + brilho2) / 2;  // Calcula o brilho médio
-    printf("Brilho médio do LED: %d\n", brilho_medio);
-    return 0;
-}
-```
-
----
-
-### **3. Operadores de Comparação**
-#### Explicação
-Comparam valores e retornam `1` (verdadeiro) ou `0` (falso):
-- `==` (igual), `!=` (diferente), `<`, `>`, `<=`, `>=`.
-
-#### Exemplo: Comparação de números
-```c
-#include <stdio.h>
-
-int main() {
-    int a = 5, b = 10;
-    
-    if (a < b) {
-        printf("A é menor que B\n");
-    } else {
-        printf("A não é menor que B\n");
-    }
-    return 0;
-}
-```
-
-#### Simulação em Hardware
-Verificar se um botão foi pressionado:
-```c
-#include <stdio.h>
-
-int main() {
-    int botao_pressionado = 1;  // 1 significa que o botão foi pressionado
-    
-    if (botao_pressionado == 1) {
-        printf("O botão foi pressionado, acendendo o LED!\n");
-    } else {
-        printf("O botão não foi pressionado.\n");
-    }
-    return 0;
-}
-```
-
----
-
-### **4. Operadores Lógicos**
-#### Explicação
-Combinam expressões:
-- `&&` (e lógico), `||` (ou lógico), `!` (não lógico).
-
-#### Exemplo: Controle de acesso
-```c
-#include <stdio.h>
-
-int main() {
-    int senha_correta = 1234;  // Senha correta
-    int senha_entrada;        // Senha digitada pelo usuário
-    int botao_pressionado;    // Estado do botão: 1 = pressionado, 0 = não pressionado
-
-    // Solicita a senha do usuário
-    printf("Digite a senha: ");
-    scanf("%d", &senha_entrada);
-
-    // Solicita o estado do botão
-    printf("O botão foi pressionado? (1 para Sim, 0 para Não): ");
-    scanf("%d", &botao_pressionado);
-
-    // Verifica as duas condições
-    if (senha_entrada == senha_correta && botao_pressionado == 1) {
-        printf("Acesso permitido! LED aceso.\n");
-    } else {
-        printf("Acesso negado. Verifique a senha ou pressione o botão.\n");
-    }
-
-    return 0;
-}
-```
-
-#### Simulação em Hardware
-Acender o LED apenas se dois botões forem pressionados:
-```c
-#include <stdio.h>
-
-int main() {
-    int botao1 = 1, botao2 = 0;  // 1 = pressionado, 0 = não pressionado
-    
-    if (botao1 == 1 && botao2 == 1) {
-        printf("Ambos os botões foram pressionados. LED aceso!\n");
-    } else {
-        printf("Os dois botões não estão pressionados.\n");
-    }
-    return 0;
-}
-```
-
----
-
-### **5. Estruturas Condicionais**
-#### Explicação
-Permitem executar partes diferentes do código com base em condições.
-
-#### Exemplo: Verificar temperatura
-```c
-#include <stdio.h>
-
-int main() {
-    int temperatura = 30;
-
-    if (temperatura > 25) {
-        printf("Está quente!\n");
-    } else {
-        printf("Está frio!\n");
-    }
-    return 0;
-}
-```
-
-#### Simulação em Hardware
-Ligar ou desligar um ventilador com base na temperatura:
-```c
-#include <stdio.h>
-
-int main() {
-    int temperatura = 30;
-
-    if (temperatura > 25) {
-        printf("Temperatura alta! Ligando o ventilador.\n");
-    } else {
-        printf("Temperatura normal. Ventilador desligado.\n");
-    }
-    return 0;
 }
 ```
 
