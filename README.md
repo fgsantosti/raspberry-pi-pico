@@ -641,6 +641,121 @@ int main() {
 
 ```
 
+
+### **9.Serial Monitor**
+O Serial Monitor é uma ferramenta que permite visualizar as mensagens enviadas pela placa de sistema embarcado, como Arduino ou Raspberry Pi, através da interface serial.
+
+Ele serve para:
+
+- Depurar o código: verificar se o programa está funcionando corretamente.
+- Visualizar dados: exibir dados coletados por sensores ou outros dispositivos.
+- Testar comunicação: verificar se a placa está se comunicando corretamente com outros dispositivos.
+
+Em resumo, o Serial Monitor é uma ferramenta essencial para desenvolvedores de sistemas embarcados, permitindo que eles monitorem e depurem o funcionamento de suas placas.
+
+#### Explicação
+
+```c
+#include <stdio.h>
+#include "pico/stdlib.h"
+
+#include "bootsel.h"
+
+int main(){
+    stdio_init_all();
+    // Loop infinito para verificar o estado do botão Bootsel
+    while (true) {
+        // Verifica se o botão Bootsel está pressionado
+        if (get_bootsel_button()) {
+            // Se o botão estiver pressionado, imprime a mensagem
+            printf("Botao foi pressionado.\n");
+            sleep_ms(1000);
+        }
+    }
+}
+```
+
+```c
+#include <stdio.h>
+#include "pico/stdlib.h"
+
+#include "bootsel.h"
+
+int main(){
+    stdio_init_all();
+    int contador = 0;
+    // Loop infinito para verificar o estado do botão Bootsel
+    while (true) {
+        // Verifica se o botão Bootsel está pressionado
+        if (get_bootsel_button()) {
+            contador++;
+            // Se o botão estiver pressionado, imprime a mensagem
+            printf("Botao foi pressionado - %d veze(s) \n", contador);
+            sleep_ms(1000);
+        }
+    }
+}
+```
+
+```c
+#include <stdio.h>
+#include "pico/stdlib.h"
+
+#include "bootsel.h"
+
+int main(){
+    stdio_init_all();
+    // Vetor de tempos em milissegundos
+    int tempos[] = {1000,2000, 3000, 4000, 5000};
+    // Loop infinito para verificar o estado do botão Bootsel
+    while (true) {
+        // Verifica se o botão Bootsel está pressionado
+        if (get_bootsel_button()) {
+            // laço para percorrer os valores definidos no vetor
+            for(int i = 0; i < 5; i++){
+                printf("Aguardando %d segundo(s) \n", tempos[i]/1000);
+                // Aguarda o tempo definido no vetor
+                sleep_ms(tempos[i]);
+            }
+            sleep_ms(1000);
+        }
+    }
+}
+```
+
+```c
+#include <stdio.h>
+#include "pico/stdlib.h"
+
+#include "bootsel.h"
+
+void aguardaBotao(int tempos[], int tamanho){
+    // Verifica se o botão Bootsel está pressionado
+    if (get_bootsel_button()){
+        // laço para percorrer os valores definidos no vetor
+        for (int i = 0; i < tamanho; i++)
+        {
+            printf("Aguardando %d segundo(s) \n", tempos[i] / 1000);
+            // Aguarda o tempo definido no vetor
+            sleep_ms(tempos[i]);
+        }
+        sleep_ms(1000);
+    }
+}
+
+int main(){
+    stdio_init_all();
+    // Vetor de tempos em milissegundos
+    int tempos[] = {1000, 2000, 3000, 4000, 5000};
+    // Loop infinito para verificar o estado do botão Bootsel
+    while (true){
+        aguardaBotao(tempos, 5);
+    }
+}
+
+```
+
+
 ---
 
 Esses exemplos práticos fornecem uma introdução sólida para iniciantes e integram conceitos teóricos com aplicações simuladas em hardware. Se precisar de ajustes ou mais detalhes, é só avisar! 😊
