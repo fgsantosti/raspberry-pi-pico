@@ -653,7 +653,7 @@ Ele serve para:
 
 Em resumo, o Serial Monitor é uma ferramenta essencial para desenvolvedores de sistemas embarcados, permitindo que eles monitorem e depurem o funcionamento de suas placas.
 
-#### Explicação
+#### Explicação 1
 
 ```c
 #include <stdio.h>
@@ -675,6 +675,8 @@ int main(){
 }
 ```
 
+
+#### Explicação 2
 ```c
 #include <stdio.h>
 #include "pico/stdlib.h"
@@ -697,6 +699,7 @@ int main(){
 }
 ```
 
+#### Explicação 3
 ```c
 #include <stdio.h>
 #include "pico/stdlib.h"
@@ -717,12 +720,12 @@ int main(){
                 // Aguarda o tempo definido no vetor
                 sleep_ms(tempos[i]);
             }
-            sleep_ms(1000);
         }
     }
 }
 ```
 
+#### Explicação 4
 ```c
 #include <stdio.h>
 #include "pico/stdlib.h"
@@ -739,7 +742,6 @@ void aguardaBotao(int tempos[], int tamanho){
             // Aguarda o tempo definido no vetor
             sleep_ms(tempos[i]);
         }
-        sleep_ms(1000);
     }
 }
 
@@ -755,6 +757,40 @@ int main(){
 
 ```
 
+
+#### Explicação 5
+
+```c
+int main() {
+    stdio_init_all();
+    char opcao = '0';
+    while (true) {
+        scanf("%c", &opcao);
+        switch (opcao) {
+            case '1':
+                printf("Opção 1\n");
+                break;
+            case '2':
+                printf("Opção 2\n");
+                break;
+            case '3':
+                printf("Opção 3\n");
+                break;
+            case '4':
+                printf("Opção 4\n");
+                break;
+            case '5':
+                printf("Opção 5\n");
+                break;
+            default:
+                printf("Opção inválida\n");
+                break;
+        }
+        sleep_ms(1000);
+    }
+}
+
+```
 
 ---
 
